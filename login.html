@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Access your DisasterResponse HQ command account." />
+  <title>Mission Login | DisasterResponse HQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-card__header">
+        <a class="logo" href="index.html" style="display:flex;justify-content:center;">
+          <img src="images/stackly-logo-disaster.webp" alt="DisasterResponse HQ" width="200" height="64" style="filter:none;" />
+        </a>
+        <h1 class="auth-card__title">Command Center Login</h1>
+        <p class="auth-card__sub">Access your emergency management dashboard</p>
+      </div>
+      <form novalidate>
+        <div class="form-group">
+          <label class="form-label" for="login-email">Agency Email</label>
+          <input type="email" id="login-email" name="email" class="form-input" placeholder="Enter your email" autocomplete="email" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" class="form-input" placeholder="Enter your password" autocomplete="current-password" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-role">Login As</label>
+          <select id="login-role" name="role" class="form-input">
+            <option value="">Select your role...</option>
+            <option value="admin">Admin</option>
+            <option value="customer">Customer</option>
+          </select>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:0.5rem;margin-bottom:1.25rem;font-size:0.875rem;">
+          <label style="display:flex;align-items:center;gap:0.4rem;color:var(--color-text-muted);cursor:pointer;">
+            <input type="checkbox" /> Remember this device
+          </label>
+          <a href="404.html" style="color:var(--color-primary);font-weight:600;">Reset Password</a>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width:100%;">Access Command Dashboard</button>
+        <div style="margin-top:1rem;padding:0.85rem;background:rgba(232,65,24,0.06);border:1px solid rgba(232,65,24,0.15);border-radius:8px;text-align:center;">
+          <span style="font-size:0.82rem;color:var(--color-text-muted);">🔴 Active Incident? Call <a href="tel:+18005550142" style="color:var(--color-primary);font-weight:700;">+91-9876543210</a></span>
+        </div>
+      </form>
+      <div class="auth-card__footer">
+        <p>New agency? <a href="register.html">Register your organization →</a></p>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.querySelector('.auth-card img').style.filter = 'none';
+
+    (function () {
+      const form     = document.querySelector('form');
+      const email    = document.getElementById('login-email');
+      const password = document.getElementById('login-password');
+      const role     = document.getElementById('login-role');
+
+      function showError(input, msg) {
+        input.classList.add('form-input--error');
+        input.classList.remove('form-input--success');
+        let el = input.parentElement.querySelector('.form-error-msg');
+        if (!el) { el = document.createElement('span'); el.className = 'form-error-msg'; input.parentElement.appendChild(el); }
+        el.textContent = msg;
+      }
+
+      function showSuccess(input) {
+        input.classList.remove('form-input--error');
+        input.classList.add('form-input--success');
+        const el = input.parentElement.querySelector('.form-error-msg');
+        if (el) el.remove();
+      }
+
+      function clearError(input) {
+        input.classList.remove('form-input--error');
+        const el = input.parentElement.querySelector('.form-error-msg');
+        if (el) el.remove();
+      }
+
+      function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+      email.addEventListener('input',    () => clearError(email));
+      password.addEventListener('input', () => clearError(password));
+      role.addEventListener('change',    () => clearError(role));
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let ok = true;
+
+        const emailVal = email.value.trim();
+        if (!emailVal) {
+          showError(email, 'Agency email is required.'); ok = false;
+        } else if (!isValidEmail(emailVal)) {
+          showError(email, 'Please enter a valid email address.'); ok = false;
+        } else { showSuccess(email); }
+
+        if (!password.value) {
+          showError(password, 'Password is required.'); ok = false;
+        } else if (password.value.length < 8) {
+          showError(password, 'Password must be at least 8 characters.'); ok = false;
+        } else { showSuccess(password); }
+
+        if (!role.value) {
+          showError(role, 'Please select your role.'); ok = false;
+        } else { showSuccess(role); }
+
+        if (ok) {
+          const stored = JSON.parse(localStorage.getItem('drHQ_user') || '{}');
+          stored.email = emailVal;
+          stored.role  = role.value;
+          localStorage.setItem('drHQ_user', JSON.stringify(stored));
+          localStorage.setItem('drHQ_session', '1');
+          window.location.href = role.value === 'admin' ? 'admin-dashboard.html' : 'customer-dashboard.html';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

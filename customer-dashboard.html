@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DisasterResponse HQ Agency Dashboard — incident tracking, equipment deployments, and operational support." />
+  <title>Customer Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/dashboard-responsive.css" />
+</head>
+<body class="dashboard-page">
+ 
+  <div class="dash">
+    <div class="dash__overlay" aria-hidden="true"></div>
+
+    <aside class="dash__side" aria-label="Customer navigation">
+      <div class="dash__brand">
+        <a class="dash__brandLink" href="index.html" aria-label="Home">
+          <img class="logo__img" src="images/stackly-logo-disaster.webp" alt="" width="320" height="80" decoding="async" />
+        </a>
+      </div>
+      <ul class="dash__nav">
+        <li><a href="customer-dashboard.html" aria-current="page"><span class="dash__ico" aria-hidden="true">⌂</span>Overview</a></li>
+        <li><a href="#charts"><span class="dash__ico" aria-hidden="true">▤</span>Charts</a></li>
+        <li><a href="#requests"><span class="dash__ico" aria-hidden="true">▦</span>Requests</a></li>
+        <li><a href="#orders"><span class="dash__ico" aria-hidden="true">⟲</span>Orders</a></li>
+        <li><a href="#deployments"><span class="dash__ico" aria-hidden="true">◎</span>Deployments</a></li>
+        <li><a href="#messages"><span class="dash__ico" aria-hidden="true">✉</span>Messages</a></li>
+        <li><a href="#support"><span class="dash__ico" aria-hidden="true">?</span>Support</a></li>
+        <li class="dash__divider" aria-hidden="true"></li>
+        <li><a href="login.html" id="dash-logout"><span class="dash__ico" aria-hidden="true">⏻</span>Logout</a></li>
+      </ul>
+    </aside>
+
+    <main class="dash__main">
+      <header class="dash__top">
+        <button type="button" class="btn btn--outline btn--sm dash__menuBtn" data-dash-toggle aria-label="Open menu">☰</button>
+        <div class="dash__title">
+          <h1 id="dash-welcome">Welcome back</h1>
+          <p>Quotes, deliveries, and support status at a glance.</p>
+        </div>
+        <div class="dash__right">
+          <label class="dashSearch" aria-label="Search">
+            <span aria-hidden="true">⌕</span>
+            <input type="search" placeholder="Search orders, requests…" />
+          </label>
+          <div class="dashUser" aria-label="Signed in user">
+            <span class="dashUser__av" aria-hidden="true" id="dash-av">S</span>
+            <div class="dashUser__meta">
+              <strong id="dash-name">Sarah Chen</strong>
+              <span id="dash-agency">Harborview</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="kpis" aria-label="Key metrics">
+        <article class="kpi">
+          <div class="kpi__row">
+            <span class="kpi__label">Open quotes</span>
+            <span class="kpi__trend kpi__trend--up">+1</span>
+          </div>
+          <span class="kpi__value">3</span>
+          <span class="kpi__sub">pending approval</span>
+        </article>
+        <article class="kpi">
+          <div class="kpi__row">
+            <span class="kpi__label">Orders in transit</span>
+            <span class="kpi__trend kpi__trend--up">+1</span>
+          </div>
+          <span class="kpi__value">2</span>
+          <span class="kpi__sub">arriving soon</span>
+        </article>
+        <article class="kpi">
+          <div class="kpi__row">
+            <span class="kpi__label">Unread messages</span>
+            <span class="kpi__trend kpi__trend--down">-2</span>
+          </div>
+          <span class="kpi__value">1</span>
+          <span class="kpi__sub">from account team</span>
+        </article>
+        <article class="kpi">
+          <div class="kpi__row">
+            <span class="kpi__label">CSAT</span>
+            <span class="kpi__trend kpi__trend--up">+0.2</span>
+          </div>
+          <span class="kpi__value">5★</span>
+          <span class="kpi__sub">last survey</span>
+        </article>
+      </section>
+
+      <section class="dashGrid" aria-label="Dashboard content">
+        <div class="dashCol">
+          <section id="charts" class="charts" aria-label="Charts">
+            <article class="panel">
+              <div class="panel__head">
+                <h2>Quotes & orders</h2>
+                <p>Quarterly activity overview.</p>
+              </div>
+              <div class="panel__body chartBox">
+                <canvas id="cus_quotes" aria-label="Quotes and orders chart" role="img"></canvas>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel__head">
+                <h2>Support cases</h2>
+                <p>Last 6 months by category.</p>
+              </div>
+              <div class="panel__body chartBox">
+                <canvas id="cus_support" aria-label="Support cases chart" role="img"></canvas>
+              </div>
+            </article>
+          </section>
+
+          <article class="panel" id="requests">
+            <div class="panel__head">
+              <h2>Requested products</h2>
+              <p>Quote requests and approvals.</p>
+            </div>
+            <div class="panel__body tableWrap">
+              <table class="tbl">
+                <thead>
+                  <tr>
+                    <th>Request</th>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Est. value</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>REQ-441</td>
+                    <td>Field Medical Station Pro</td>
+                    <td>18</td>
+                    <td>$186,400</td>
+                    <td><span class="pill pill--warn">Pricing</span></td>
+                  </tr>
+                  <tr>
+                    <td>REQ-438</td>
+                    <td>InfuseSmart LV</td>
+                    <td>30</td>
+                    <td>$42,900</td>
+                    <td><span class="pill pill--ok">Approved</span></td>
+                  </tr>
+                  <tr>
+                    <td>REQ-433</td>
+                    <td>RespiCare Portable Ventilator</td>
+                    <td>5</td>
+                    <td>$76,500</td>
+                    <td><span class="pill pill--info">Reviewing</span></td>
+                  </tr>
+                  <tr>
+                    <td>REQ-421</td>
+                    <td>ShockSave AED Plus</td>
+                    <td>10</td>
+                    <td>$19,800</td>
+                    <td><span class="pill pill--ok">Delivered</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel" id="orders">
+            <div class="panel__head">
+              <h2>Orders</h2>
+              <p>Delivery tracking and status.</p>
+            </div>
+            <div class="panel__body tableWrap">
+              <table class="tbl">
+                <thead>
+                  <tr>
+                    <th>Order</th>
+                    <th>Ship date</th>
+                    <th>Carrier</th>
+                    <th>ETA</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#ME-10492</td>
+                    <td>Apr 10, 2026</td>
+                    <td>MedFreight</td>
+                    <td>Apr 12, 2026</td>
+                    <td><span class="pill pill--warn">In transit</span></td>
+                  </tr>
+                  <tr>
+                    <td>#ME-10301</td>
+                    <td>Mar 02, 2026</td>
+                    <td>MedFreight</td>
+                    <td>Mar 05, 2026</td>
+                    <td><span class="pill pill--ok">Deployed</span></td>
+                  </tr>
+                  <tr>
+                    <td>#ME-10450</td>
+                    <td>Apr 18, 2026</td>
+                    <td>SwiftMed</td>
+                    <td>Apr 22, 2026</td>
+                    <td><span class="pill pill--info">Processing</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel" id="deployments">
+            <div class="panel__head">
+              <h2>Equipment Deployments</h2>
+              <p>Active units at your facilities.</p>
+            </div>
+            <div class="panel__body tableWrap">
+              <table class="tbl">
+                <thead>
+                  <tr>
+                    <th>Unit ID</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Installed</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>FMS-0042</td>
+                    <td>Field Medical Station Pro</td>
+                    <td>ICU Wing A</td>
+                    <td>Mar 05, 2026</td>
+                    <td><span class="pill pill--ok">Operational</span></td>
+                  </tr>
+                  <tr>
+                    <td>INF-0091</td>
+                    <td>InfuseSmart LV</td>
+                    <td>Ward 3</td>
+                    <td>Mar 05, 2026</td>
+                    <td><span class="pill pill--ok">Operational</span></td>
+                  </tr>
+                  <tr>
+                    <td>ECG-0034</td>
+                    <td>CardioTrace 12L</td>
+                    <td>Cardiology Dept</td>
+                    <td>Jan 14, 2026</td>
+                    <td><span class="pill pill--warn">Service due</span></td>
+                  </tr>
+                  <tr>
+                    <td>DEF-0017</td>
+                    <td>ShockSave AED Plus</td>
+                    <td>Emergency Bay</td>
+                    <td>Oct 20, 2025</td>
+                    <td><span class="pill pill--ok">Operational</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+
+        <aside class="dashCol" aria-label="Right panel">
+          <article class="panel">
+            <div class="panel__head">
+              <h3>Profile</h3>
+              <p>Account details.</p>
+            </div>
+            <div class="panel__body">
+              <ul class="list">
+                <li><strong>Organization</strong><span id="dash-org">Harborview Trauma Center</span></li>
+                <li><strong>Primary contact</strong><span id="dash-contact">Sarah Chen · Sarah@gmail.com</span></li>
+                <li><strong>Account manager</strong><span>James Reyes · james@thestackly.com</span></li>
+                <li><strong>Contract expires</strong><span>Dec 31, 2026</span></li>
+              </ul>
+              <div style="margin-top:0.85rem;">
+                <a href="404.html" class="btn btn--outline btn--sm">Update details</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel" id="messages">
+            <div class="panel__head">
+              <h3>Messages</h3>
+              <p>From your account team.</p>
+            </div>
+            <div class="panel__body">
+              <ul class="list">
+                <li>
+                  <strong>Order #ME-10492 update</strong>
+                  <span>Shipment cleared customs — ETA Apr 12. · Account team · 2h ago</span>
+                </li>
+                <li>
+                  <strong>Quote REQ-441 ready for review</strong>
+                  <span>Pricing finalised, please approve. · Sales · Yesterday</span>
+                </li>
+                <li>
+                  <strong>Service reminder — ECG-0034</strong>
+                  <span>Scheduled maintenance due Apr 20. · Support · 2 days ago</span>
+                </li>
+              </ul>
+              <div style="margin-top:0.85rem;">
+                <a href="404.html" class="btn btn--outline btn--sm">View all messages</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel" id="support">
+            <div class="panel__head">
+              <h3>Support</h3>
+              <p>Get help fast.</p>
+            </div>
+            <div class="panel__body">
+              <ul class="list">
+                <li><strong>24/7 emergency line</strong><span>+91-9876543210</span></li>
+                <li><strong>Email</strong><span>info@thestackly.com</span></li>
+                <li><strong>Next delivery ETA</strong><span>Apr 12, 2026</span></li>
+                <li><strong>Open tickets</strong><span>2 active — avg. response 4h</span></li>
+                <li><strong>Last resolved</strong><span>ECG calibration issue · Apr 8</span></li>
+              </ul>
+              <div style="margin-top:0.85rem; display:flex; gap:0.65rem; flex-wrap:wrap;">
+                <a href="404.html" class="btn btn--primary btn--sm">Open ticket</a>
+                <a href="#orders" class="btn btn--outline btn--sm">Track orders</a>
+              </div>
+            </div>
+          </article>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script>
+    (function () {
+      const user = JSON.parse(localStorage.getItem('drHQ_user') || '{}');
+      const fullName = [user.fname, user.lname].filter(Boolean).join(' ') || 'Commander';
+      const email    = user.email   || '';
+      const agency   = user.agency  || 'Your Agency';
+      const initial  = fullName.charAt(0).toUpperCase();
+
+      document.getElementById('dash-welcome').textContent = 'Welcome back, ' + (user.fname || fullName);
+      document.getElementById('dash-av').textContent      = initial;
+      document.getElementById('dash-name').textContent    = fullName;
+      document.getElementById('dash-agency').textContent  = agency;
+      document.getElementById('dash-org').textContent     = agency;
+      document.getElementById('dash-contact').textContent = fullName + (email ? ' · ' + email : '');
+
+      document.getElementById('dash-logout').addEventListener('click', function () {
+        localStorage.removeItem('drHQ_user');
+        localStorage.removeItem('drHQ_session');
+      });
+    })();
+  </script>
+</body>
+</html>

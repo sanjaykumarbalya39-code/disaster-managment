@@ -1,0 +1,441 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DisasterResponse HQ Command Dashboard — incident management, deployments, and operations analytics." />
+  <title>Admin Incident Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/dashboard-responsive.css" />
+</head>
+<body class="dashboard-page">
+
+
+  <div class="dash">
+    <div class="dash__overlay" aria-hidden="true"></div>
+
+    <aside class="dash__side" aria-label="Admin navigation">
+      <div class="dash__brand">
+        <a class="dash__brandLink" href="index.html" aria-label="Home">
+          <img class="logo__img" src="images/stackly-logo-disaster.webp" alt="" width="320" height="80" decoding="async" />
+        </a>
+      </div>
+      <ul class="dash__nav">
+        <li><a href="admin-dashboard.html" aria-current="page"><span class="dash__ico" aria-hidden="true">⌂</span>Overview</a></li>
+        <li><a href="#charts"><span class="dash__ico" aria-hidden="true">▤</span>Charts</a></li>
+        <li><a href="#incidents"><span class="dash__ico" aria-hidden="true">⚠</span>Incidents</a></li>
+        <li><a href="#products"><span class="dash__ico" aria-hidden="true">▦</span>Equipment</a></li>
+        <li><a href="#orders"><span class="dash__ico" aria-hidden="true">⟲</span>Orders</a></li>
+        <li><a href="#team"><span class="dash__ico" aria-hidden="true">◉</span>Teams</a></li>
+        <li><a href="#inquiries"><span class="dash__ico" aria-hidden="true">✉</span>Inquiries</a></li>
+        <li><a href="#reports"><span class="dash__ico" aria-hidden="true">☷</span>Reports</a></li>
+        <li class="dash__divider" aria-hidden="true"></li>
+        <li><a href="index.html"><span class="dash__ico" aria-hidden="true">↩</span>Exit</a></li>
+      </ul>
+    </aside>
+
+    <main class="dash__main">
+      <header class="dash__top">
+        <button type="button" class="btn btn--outline btn--sm dash__menuBtn" data-dash-toggle aria-label="Open menu">☰</button>
+        <div class="dash__title">
+          <h1>Admin dashboard</h1>
+          <p>Orders, inventory health, and customer signals.</p>
+        </div>
+        <div class="dash__right">
+          <label class="dashSearch" aria-label="Search">
+            <span aria-hidden="true">⌕</span>
+            <input type="search" placeholder="Search SKU, order, message…" />
+          </label>
+          <div class="dashUser" aria-label="Signed in user">
+            <span class="dashUser__av" aria-hidden="true">A</span>
+            <div class="dashUser__meta">
+              <strong>Admin</strong>
+              <span>Operations</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="kpis" aria-label="Key metrics">
+        <article class="kpi">
+          <div class="kpi__row">
+            <span class="kpi__label">Active SKUs</span>
+            <span class="kpi__trend kpi__trend--up">+4.1%</span>
+          </div>
+          <span class="kpi__value">128</span>
+          <span class="kpi__sub">vs last month</span>
+        </article>
+        <article class="kpi">
+          <div class="kpi__row">
+            <span class="kpi__label">Open pipeline (30d)</span>
+            <span class="kpi__trend kpi__trend--up">+9.8%</span>
+          </div>
+          <span class="kpi__value">$842K</span>
+          <span class="kpi__sub">qualified opportunities</span>
+        </article>
+        <article class="kpi">
+          <div class="kpi__row">
+            <span class="kpi__label">On-time fulfillment</span>
+            <span class="kpi__trend kpi__trend--down">-1.2%</span>
+          </div>
+          <span class="kpi__value">94%</span>
+          <span class="kpi__sub">rolling 30 days</span>
+        </article>
+        <article class="kpi">
+          <div class="kpi__row">
+            <span class="kpi__label">New inquiries</span>
+            <span class="kpi__trend kpi__trend--up">+12</span>
+          </div>
+          <span class="kpi__value">36</span>
+          <span class="kpi__sub">this week</span>
+        </article>
+      </section>
+
+      <section class="dashGrid" aria-label="Incident Dashboard content">
+        <div class="dashCol">
+          <section id="charts" class="charts" aria-label="Charts">
+            <article class="panel">
+              <div class="panel__head">
+                <h2>Orders trend</h2>
+                <p>Shipped vs delivered (12 months).</p>
+              </div>
+              <div class="panel__body chartBox">
+                <canvas id="adm_orders" aria-label="Orders trend chart" role="img"></canvas>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel__head">
+                <h2>Inventory mix</h2>
+                <p>In stock, low stock, backorder.</p>
+              </div>
+              <div class="panel__body chartBox">
+                <canvas id="adm_inventory" aria-label="Inventory mix chart" role="img"></canvas>
+              </div>
+            </article>
+          </section>
+
+          <article class="panel" id="incidents">
+            <div class="panel__head">
+              <h2>Active Incidents</h2>
+              <p>Ongoing events and priority alerts.</p>
+            </div>
+            <div class="panel__body tableWrap">
+              <table class="tbl">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Severity</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>INC-2041</td>
+                    <td>Flood</td>
+                    <td>Riverside District</td>
+                    <td><span class="pill pill--danger">Critical</span></td>
+                    <td><span class="pill pill--warn">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>INC-2038</td>
+                    <td>Wildfire</td>
+                    <td>Northern Hills</td>
+                    <td><span class="pill pill--warn">High</span></td>
+                    <td><span class="pill pill--warn">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>INC-2035</td>
+                    <td>Earthquake</td>
+                    <td>Port Zone</td>
+                    <td><span class="pill pill--warn">High</span></td>
+                    <td><span class="pill pill--ok">Contained</span></td>
+                  </tr>
+                  <tr>
+                    <td>INC-2029</td>
+                    <td>Chemical Spill</td>
+                    <td>Industrial Park</td>
+                    <td><span class="pill pill--info">Low</span></td>
+                    <td><span class="pill pill--ok">Resolved</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel" id="products">
+            <div class="panel__head">
+              <h2>Equipment</h2>
+              <p>Catalog health and stock status.</p>
+            </div>
+            <div class="panel__body tableWrap">
+              <table class="tbl">
+                <thead>
+                  <tr>
+                    <th>SKU</th>
+                    <th>Equipment Type</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>MON-700</td>
+                    <td>Field Medical Station Pro</td>
+                    <td>Monitoring</td>
+                    <td>48</td>
+                    <td><span class="pill pill--ok">In stock</span></td>
+                  </tr>
+                  <tr>
+                    <td>ECG-220</td>
+                    <td>CardioTrace 12L</td>
+                    <td>Cardiology</td>
+                    <td>6</td>
+                    <td><span class="pill pill--warn">Low stock</span></td>
+                  </tr>
+                  <tr>
+                    <td>INF-540</td>
+                    <td>InfuseSmart LV</td>
+                    <td>Infusion</td>
+                    <td>32</td>
+                    <td><span class="pill pill--ok">In stock</span></td>
+                  </tr>
+                  <tr>
+                    <td>VEN-310</td>
+                    <td>RespiCare Portable Ventilator</td>
+                    <td>Respiratory</td>
+                    <td>0</td>
+                    <td><span class="pill pill--danger">Backorder</span></td>
+                  </tr>
+                  <tr>
+                    <td>DEF-180</td>
+                    <td>ShockSave AED Plus</td>
+                    <td>Cardiac</td>
+                    <td>24</td>
+                    <td><span class="pill pill--ok">In stock</span></td>
+                  </tr>
+                  <tr>
+                    <td>RAD-090</td>
+                    <td>TacComm Field Radio</td>
+                    <td>Communications</td>
+                    <td>11</td>
+                    <td><span class="pill pill--warn">Low stock</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel" id="orders">
+            <div class="panel__head">
+              <h2>Orders</h2>
+              <p>Recent shipments and delivery status.</p>
+            </div>
+            <div class="panel__body tableWrap">
+              <table class="tbl">
+                <thead>
+                  <tr>
+                    <th>Order</th>
+                    <th>Agency</th>
+                    <th>Value</th>
+                    <th>Ship date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#ME-10492</td>
+                    <td>Harborview Health</td>
+                    <td>$186,400</td>
+                    <td>Apr 10, 2026</td>
+                    <td><span class="pill pill--warn">In transit</span></td>
+                  </tr>
+                  <tr>
+                    <td>#ME-10488</td>
+                    <td>Lakeside Medical</td>
+                    <td>$42,900</td>
+                    <td>Apr 05, 2026</td>
+                    <td><span class="pill pill--ok">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>#ME-10471</td>
+                    <td>Metro Emergency Services</td>
+                    <td>$98,750</td>
+                    <td>Mar 28, 2026</td>
+                    <td><span class="pill pill--ok">Delivered</span></td>
+                  </tr>
+                  <tr>
+                    <td>#ME-10459</td>
+                    <td>Ridgefield Relief Corps</td>
+                    <td>$23,200</td>
+                    <td>Mar 15, 2026</td>
+                    <td><span class="pill pill--ok">Delivered</span></td>
+                  </tr>
+                  <tr>
+                    <td>#ME-10450</td>
+                    <td>Coastline Medical Center</td>
+                    <td>$314,000</td>
+                    <td>Apr 18, 2026</td>
+                    <td><span class="pill pill--info">Processing</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel" id="team">
+            <div class="panel__head">
+              <h2>Deployed Teams</h2>
+              <p>Field units and operational status.</p>
+            </div>
+            <div class="panel__body tableWrap">
+              <table class="tbl">
+                <thead>
+                  <tr>
+                    <th>Unit</th>
+                    <th>Specialisation</th>
+                    <th>Deployed To</th>
+                    <th>Members</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Alpha-1</td>
+                    <td>Search &amp; Rescue</td>
+                    <td>Riverside District</td>
+                    <td>12</td>
+                    <td><span class="pill pill--warn">In field</span></td>
+                  </tr>
+                  <tr>
+                    <td>Bravo-3</td>
+                    <td>Medical Response</td>
+                    <td>General Hospital</td>
+                    <td>8</td>
+                    <td><span class="pill pill--ok">Standby</span></td>
+                  </tr>
+                  <tr>
+                    <td>Charlie-2</td>
+                    <td>Hazmat</td>
+                    <td>Industrial Park</td>
+                    <td>6</td>
+                    <td><span class="pill pill--info">Demobilising</span></td>
+                  </tr>
+                  <tr>
+                    <td>Delta-4</td>
+                    <td>Logistics</td>
+                    <td>Forward Base North</td>
+                    <td>10</td>
+                    <td><span class="pill pill--warn">In field</span></td>
+                  </tr>
+                  <tr>
+                    <td>Echo-5</td>
+                    <td>Communications</td>
+                    <td>Command Centre</td>
+                    <td>4</td>
+                    <td><span class="pill pill--ok">On duty</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+
+        <aside class="dashCol" aria-label="Right panel">
+          <article class="panel" id="inquiries">
+            <div class="panel__head">
+              <h3>Inquiries</h3>
+              <p>Latest opportunities.</p>
+            </div>
+            <div class="panel__body">
+              <ul class="list">
+                <li>
+                  <strong>INQ-8831</strong>
+                  <span>ICU refresh — 42 beds · US-East</span>
+                </li>
+                <li>
+                  <strong>INQ-8827</strong>
+                  <span>Infusion fleet assessment · EU-West</span>
+                </li>
+                <li>
+                  <strong>INQ-8816</strong>
+                  <span>Telemetry expansion · APAC</span>
+                </li>
+                <li>
+                  <strong>INQ-8809</strong>
+                  <span>Emergency cache resupply · US-South</span>
+                </li>
+                <li>
+                  <strong>INQ-8801</strong>
+                  <span>Ventilator fleet renewal · Canada</span>
+                </li>
+              </ul>
+              <div style="margin-top:0.85rem;">
+                <a href="404.html" class="btn btn--outline btn--sm">View all inquiries</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel__head">
+              <h3>Next actions</h3>
+              <p>Quick queue for today.</p>
+            </div>
+            <div class="panel__body">
+              <ul class="list">
+                <li><strong>Review low-stock SKUs</strong><span>3 items require reorder checks.</span></li>
+                <li><strong>Approve quotes</strong><span>2 quotes pending dispatch approval.</span></li>
+                <li><strong>Reply to inquiries</strong><span>5 new threads since yesterday.</span></li>
+                <li><strong>Deploy Alpha-1 sitrep</strong><span>INC-2041 update overdue by 2h.</span></li>
+                <li><strong>Reorder VEN-310</strong><span>Ventilator backorder — urgent request.</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="panel" id="reports">
+            <div class="panel__head">
+              <h3>Recent Reports</h3>
+              <p>Filed in the last 7 days.</p>
+            </div>
+            <div class="panel__body">
+              <ul class="list">
+                <li>
+                  <strong>Flood INC-2041 — Sitrep 3</strong>
+                  <span>Filed by Alpha-1 · 2h ago</span>
+                </li>
+                <li>
+                  <strong>Wildfire INC-2038 — Resource req.</strong>
+                  <span>Filed by Bravo-3 · 6h ago</span>
+                </li>
+                <li>
+                  <strong>Earthquake INC-2035 — After action</strong>
+                  <span>Filed by HQ · Yesterday</span>
+                </li>
+                <li>
+                  <strong>Q1 Operations Summary</strong>
+                  <span>Filed by Admin · 3 days ago</span>
+                </li>
+              </ul>
+              <div style="margin-top:0.85rem;">
+                <a href="404.html" class="btn btn--outline btn--sm">View all reports</a>
+              </div>
+            </div>
+          </article>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Register your agency or organization with DisasterResponse HQ to access emergency management tools and rapid deployment support." />
+  <title>Agency Register | DisasterResponse HQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="auth-card" style="max-width:520px;">
+      <div class="auth-card__header">
+        <a class="logo" href="index.html" style="display:flex;justify-content:center;">
+          <img src="images/stackly-logo-disaster.webp" alt="DisasterResponse HQ" width="200" height="64" style="filter:none;" />
+        </a>
+        <h1 class="auth-card__title">Register Your Agency</h1>
+        <p class="auth-card__sub">Join 500+ agencies and NGOs protecting communities worldwide</p>
+      </div>
+      <form novalidate>
+        <div class="form-name-row">
+          <div class="form-group">
+            <label class="form-label" for="reg-fname">First Name</label>
+            <input type="text" id="reg-fname" name="fname" class="form-input" placeholder="Enter first name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-lname">Last Name</label>
+            <input type="text" id="reg-lname" name="lname" class="form-input" placeholder="Enter last name" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-agency">Agency / Organization Name *</label>
+          <input type="text" id="reg-agency" name="agency" class="form-input" placeholder="Enter your agency or organization name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-email">Official Agency Email *</label>
+          <input type="email" id="reg-email" name="email" class="form-input" placeholder="Enter your official agency email" autocomplete="email" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-role">Your Role</label>
+          <select id="reg-role" name="role" class="form-input">
+            <option value="">Select your role...</option>
+            <option value="admin">Admin</option>
+            <option value="customer">Customer</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-password">Create Password *</label>
+          <input type="password" id="reg-password" name="password" class="form-input" placeholder="Enter a strong password" autocomplete="new-password" required />
+          <div class="password-strength" id="strength-wrap" style="display:none;">
+            <div class="password-strength__bar"><div class="password-strength__fill" id="strength-fill"></div></div>
+            <span class="password-strength__label" id="strength-label"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reg-confirm">Confirm Password *</label>
+          <input type="password" id="reg-confirm" name="confirm" class="form-input" placeholder="Confirm your password" autocomplete="new-password" required />
+        </div>
+        <button type="submit" class="btn btn--primary" style="width:100%;margin-top:0.5rem;">Create Agency Account</button>
+        <p style="font-size:0.78rem;color:var(--color-text-muted);text-align:center;margin-top:0.85rem;">By registering you agree to our Terms of Service and acknowledge the platform is for authorized emergency management agencies only.</p>
+      </form>
+      <div class="auth-card__footer">
+        <p>Already registered? <a href="login.html">Sign in to Command Dashboard →</a></p>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.querySelector('.auth-card img').style.filter = 'none';
+
+    (function () {
+      const form    = document.querySelector('form');
+      const fname   = document.getElementById('reg-fname');
+      const lname   = document.getElementById('reg-lname');
+      const agency  = document.getElementById('reg-agency');
+      const email   = document.getElementById('reg-email');
+      const role    = document.getElementById('reg-role');
+      const pw      = document.getElementById('reg-password');
+      const confirm = document.getElementById('reg-confirm');
+
+      function showError(input, msg) {
+        input.classList.add('form-input--error');
+        input.classList.remove('form-input--success');
+        let el = input.parentElement.querySelector('.form-error-msg');
+        if (!el) { el = document.createElement('span'); el.className = 'form-error-msg'; input.parentElement.appendChild(el); }
+        el.textContent = msg;
+      }
+
+      function showSuccess(input) {
+        input.classList.remove('form-input--error');
+        input.classList.add('form-input--success');
+        const el = input.parentElement.querySelector('.form-error-msg');
+        if (el) el.remove();
+      }
+
+      function clearError(input) {
+        input.classList.remove('form-input--error');
+        const el = input.parentElement.querySelector('.form-error-msg');
+        if (el) el.remove();
+      }
+
+      function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+      function getStrength(v) {
+        let s = 0;
+        if (v.length >= 10) s++;
+        if (/[A-Z]/.test(v)) s++;
+        if (/[0-9]/.test(v)) s++;
+        if (/[^A-Za-z0-9]/.test(v)) s++;
+        return s;
+      }
+
+      pw.addEventListener('input', function () {
+        clearError(pw);
+        const val = this.value;
+        const wrap = document.getElementById('strength-wrap');
+        if (!val) { wrap.style.display = 'none'; return; }
+        wrap.style.display = 'block';
+        const s = getStrength(val);
+        const fill  = document.getElementById('strength-fill');
+        const label = document.getElementById('strength-label');
+        const colors = ['#e53e3e', '#e53e3e', '#e8941a', '#38a169', '#38a169'];
+        const labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
+        fill.style.width = (s * 25) + '%';
+        fill.style.background = colors[s];
+        label.textContent = labels[s] || '';
+        label.style.color = colors[s];
+      });
+
+      [fname, lname, agency, email, role, confirm].forEach(f => f.addEventListener('input', () => clearError(f)));
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let ok = true;
+
+        if (!fname.value.trim()) { showError(fname, 'First name is required.'); ok = false; } else showSuccess(fname);
+        if (!lname.value.trim()) { showError(lname, 'Last name is required.'); ok = false; } else showSuccess(lname);
+        if (!agency.value.trim()) { showError(agency, 'Agency / organization name is required.'); ok = false; } else showSuccess(agency);
+
+        const emailVal = email.value.trim();
+        if (!emailVal) { showError(email, 'Official email is required.'); ok = false; }
+        else if (!isValidEmail(emailVal)) { showError(email, 'Please enter a valid email address.'); ok = false; }
+        else showSuccess(email);
+
+        if (!role.value) { showError(role, 'Please select your role.'); ok = false; } else showSuccess(role);
+
+        if (!pw.value) { showError(pw, 'Password is required.'); ok = false; }
+        else if (pw.value.length < 10) { showError(pw, 'Password must be at least 10 characters.'); ok = false; }
+        else if (getStrength(pw.value) < 2) { showError(pw, 'Password is too weak — add uppercase letters, numbers, or symbols.'); ok = false; }
+        else showSuccess(pw);
+
+        if (!confirm.value) { showError(confirm, 'Please confirm your password.'); ok = false; }
+        else if (confirm.value !== pw.value) { showError(confirm, 'Passwords do not match.'); ok = false; }
+        else showSuccess(confirm);
+
+        if (ok) {
+          localStorage.setItem('drHQ_user', JSON.stringify({
+            fname:  fname.value.trim(),
+            lname:  lname.value.trim(),
+            email:  email.value.trim(),
+            agency: agency.value.trim(),
+            role:   role.value
+          }));
+          window.location.href = 'login.html';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+/* ============================================================
+   DISASTER RESPONSE HQ — Responsive Overrides
+   Order: largest breakpoint first → smallest last.
+   This ensures smaller screens always win the cascade.
+   ============================================================ */
+
+/* Small desktop */
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Large tablet — hamburger nav + 2-col grids */
+@media (max-width: 900px) {
+  .nav-toggle { display: flex !important; }
+
+  .nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0; right: 0;
+    background: rgba(10, 14, 26, 0.99);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.5rem 2rem;
+    border-top: 2px solid var(--color-primary);
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    max-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  .nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav__list li { width: 100%; }
+
+  .nav__link {
+    display: block;
+    padding: 1rem 0.5rem;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.85);
+    width: 100%;
+  }
+
+  .nav__link.is-active { color: var(--color-accent); }
+
+  .nav__actions {
+    margin-left: 0;
+    margin-top: 1.25rem;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .nav__actions .btn { width: 100%; justify-content: center; }
+
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .partner-profiles-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .split { grid-template-columns: 1fr; }
+  .split__visual--img { aspect-ratio: 16/9; max-height: 300px; }
+
+  .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin-inline: auto; }
+  .pricing-card--featured { transform: none; }
+
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+
+  .contact-grid { grid-template-columns: 1fr; }
+
+  .process-linear { grid-template-columns: repeat(2, 1fr); }
+  .process-linear::before { display: none; }
+
+  .evolution-timeline::before { left: 16px; }
+  .evolution-item { width: 100%; padding-left: 3rem; }
+  .evolution-item--left, .evolution-item--right { margin-left: 0; margin-right: 0; }
+}
+
+/* Mobile — single-column layout + centered footer & why-cards */
+@media (max-width: 600px) {
+  .alert-ticker { font-size: 0.75rem; }
+  .alert-ticker__item { padding: 0 1.5rem; }
+  .alert-ticker__label { display: none; }
+
+  /* hero__stats is display:flex — grid-template-columns has no effect here */
+  .hero__stats { gap: 0.75rem 1.5rem; }
+  .hero__stat-value { font-size: 1.6rem; }
+
+  /* Why grid: single column, cards centered */
+  .why-grid { grid-template-columns: 1fr; }
+  .why-card { text-align: center; }
+
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+
+  .blog-grid { grid-template-columns: 1fr; }
+
+  .partner-profiles-grid { grid-template-columns: 1fr; }
+
+  .compliance-panel { grid-template-columns: 1fr; }
+  .compliance-panel__intro { border-right: none; border-bottom: 1px solid var(--color-border); }
+
+  /* Footer: single column, fully centered */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2.5rem 0 1.5rem;
+    text-align: center;
+  }
+  .footer-brand .logo { justify-content: center; }
+  .footer-social { justify-content: center; }
+  .footer-contact li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+  .footer-bottom { justify-content: center; }
+}
+
+/* Auth pages — base layout (used on login & register) */
+.form-name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Small mobile: 320–480px */
+@media (max-width: 480px) {
+  /* Stats: single column so large numbers (2,400,000) don't overflow */
+  .stats-grid { grid-template-columns: 1fr; }
+
+  /* Hero kicker pill: allow wrapping so long uppercase text doesn't overflow */
+  .hero__kicker {
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+    font-size: 0.65rem;
+  }
+
+  /* Hero stats: explicit 2-column flex layout */
+  .hero__stats { gap: 0.75rem 1rem; }
+  .hero__stat { flex: 0 0 calc(50% - 0.5rem); }
+
+  /* Hero buttons: full-width and stacked */
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+
+  /* Subscribe form: stack input and button */
+  .subscribe-form__row { flex-direction: column; }
+  .subscribe-form__submit { width: 100%; }
+
+  /* Evolution timeline: tighten left padding */
+  .evolution-item { padding-left: 2.25rem; }
+
+  /* Section lead: fill available width */
+  .section__lead { max-width: 100%; }
+
+  /* Auth pages: reduce padding so form fields have more room */
+  .auth-page { padding: 1rem 0.75rem; }
+  .auth-card { padding: 1.5rem 1.25rem; }
+
+  /* Register: collapse first/last name to single column */
+  .form-name-row { grid-template-columns: 1fr; }
+}
+
+/* Print */
+@media print {
+  .site-header, .alert-ticker, .hero-glow, .hero-glow-2,
+  #preloader, .nav-toggle, .footer-social { display: none; }
+
+  body { color: #000; background: #fff; }
+
+  .hero {
+    background: #0d1b2a !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
