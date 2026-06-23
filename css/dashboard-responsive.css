@@ -44,6 +44,15 @@
     grid-template-columns: auto 1fr;
   }
 
+  .dash__headerLogo {
+    grid-column: 1 / -1;
+    order: -1;
+    justify-content: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--dash-border);
+    margin-bottom: 0.25rem;
+  }
+
   .dash__right {
     grid-column: 1 / -1;
     justify-content: stretch;

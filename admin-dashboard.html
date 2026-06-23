@@ -21,11 +21,6 @@
     <div class="dash__overlay" aria-hidden="true"></div>
 
     <aside class="dash__side" aria-label="Admin navigation">
-      <div class="dash__brand">
-        <a class="dash__brandLink" href="index.html" aria-label="Home">
-          <img class="logo__img" src="images/stackly-logo-disaster.webp" alt="" width="320" height="80" decoding="async" />
-        </a>
-      </div>
       <ul class="dash__nav">
         <li><a href="admin-dashboard.html" aria-current="page"><span class="dash__ico" aria-hidden="true">⌂</span>Overview</a></li>
         <li><a href="#charts"><span class="dash__ico" aria-hidden="true">▤</span>Charts</a></li>
@@ -42,6 +37,11 @@
 
     <main class="dash__main">
       <header class="dash__top">
+        <div class="dash__headerLogo">
+          <a class="dash__brandLink" href="index.html" aria-label="Home">
+            <img class="logo__img" src="images/stackly-logo-disaster.webp" alt="Stackly" width="160" height="40" decoding="async" />
+          </a>
+        </div>
         <button type="button" class="btn btn--outline btn--sm dash__menuBtn" data-dash-toggle aria-label="Open menu">☰</button>
         <div class="dash__title">
           <h1>Admin dashboard</h1>
