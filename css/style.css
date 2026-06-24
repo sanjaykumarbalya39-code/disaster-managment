@@ -1,7 +1,7 @@
 /* ============================================================
-   DISASTER RESPONSE HQ — Premium ThemeForest-level CSS
-   Color Palette: Deep Navy, Alert Orange, Emergency Red, 
-   Tactical Green, Pure White
+   ECO VOYAGE — Premium EcoTourism Platform
+   Color Palette: Forest Green, Sage Green, Earth Brown, 
+   Cream, Natural White
    ============================================================ */
 
 /* ---- PRELOADER ---- */
@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #0a0e1a 0%, #0d1b2a 50%, #0a1628 100%);
+  background: linear-gradient(135deg, #1a4d3b 0%, #2d7e5f 50%, #27a156 100%);
   transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
@@ -25,7 +25,7 @@
   border-radius: 50%;
   top: -20%;
   right: -10%;
-  background: radial-gradient(circle, rgba(255, 87, 34, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(45, 126, 95, 0.12) 0%, transparent 70%);
   animation: preloader-float-a 5s ease-in-out infinite;
 }
 
@@ -37,7 +37,7 @@
   border-radius: 50%;
   bottom: -20%;
   left: -10%;
-  background: radial-gradient(circle, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(139, 111, 71, 0.1) 0%, transparent 70%);
   animation: preloader-float-b 6s ease-in-out infinite;
 }
 
@@ -61,20 +61,20 @@
   gap: 24px;
   padding: 40px 48px 36px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 87, 34, 0.2);
-  background: rgba(10, 14, 26, 0.9);
-  box-shadow: 0 0 60px rgba(255, 87, 34, 0.15), 0 24px 80px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  border: 1px solid rgba(45, 126, 95, 0.3);
+  background: rgba(26, 77, 59, 0.95);
+  box-shadow: 0 0 60px rgba(45, 126, 95, 0.2), 0 24px 80px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.08);
   backdrop-filter: blur(20px);
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .preloader__inner::after {
-  content: "Initializing Emergency Systems...";
+  content: "Loading Your Journey...";
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, #ff5722 40%, #ffc107 60%, rgba(255,255,255,0.4) 100%);
+  background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, #27a156 40%, #52b788 60%, rgba(255,255,255,0.4) 100%);
   background-size: 250% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -85,7 +85,7 @@
 .preloader__logo {
   max-width: 200px;
   height: auto;
-  filter: drop-shadow(0 0 20px rgba(255, 87, 34, 0.4)) brightness(1.1);
+  filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.35));
   animation: preloader-logo-breathe 2.4s ease-in-out infinite;
 }
 
@@ -102,8 +102,8 @@
   inset: 0;
   border-radius: 50%;
   border: 3px solid rgba(255, 87, 34, 0.15);
-  border-top-color: #ff5722;
-  border-right-color: #ffc107;
+  border-top-color: #27a156;
+  border-right-color: #8b6f47;
 }
 
 .preloader__spinner::after {
@@ -148,26 +148,26 @@
    CSS CUSTOM PROPERTIES
    ============================================================ */
 :root {
-  --color-primary: #e84118;
-  --color-primary-dark: #c23010;
-  --color-primary-soft: #fff0ed;
-  --color-accent: #f39c12;
-  --color-accent-dark: #d68910;
-  --color-success: #27ae60;
-  --color-navy: #0d1b2a;
-  --color-navy-mid: #1a2e44;
-  --color-navy-light: #243447;
-  --color-text: #1a2332;
-  --color-text-muted: #566882;
-  --color-border: #e1e8f0;
-  --color-bg: #ffffff;
-  --color-bg-alt: #f5f7fa;
-  --color-bg-dark: #0d1b2a;
-  --color-bg-card: #fafbfd;
-  --shadow-sm: 0 2px 8px rgba(13, 27, 42, 0.06);
-  --shadow-md: 0 8px 32px rgba(13, 27, 42, 0.1);
-  --shadow-lg: 0 20px 60px rgba(13, 27, 42, 0.14);
-  --shadow-glow: 0 0 40px rgba(232, 65, 24, 0.25);
+  --color-primary: #27a156;
+  --color-primary-dark: #1d7a41;
+  --color-primary-soft: #e8f5f0;
+  --color-accent: #8b6f47;
+  --color-accent-dark: #6b5437;
+  --color-success: #52b788;
+  --color-navy: #1a4d3b;
+  --color-navy-mid: #2d7e5f;
+  --color-navy-light: #4a9b6f;
+  --color-text: #2c3e1f;
+  --color-text-muted: #6b7f5f;
+  --color-border: #d4e4d9;
+  --color-bg: #e8f5eb;
+  --color-bg-alt: #d6ecda;
+  --color-bg-dark: #1a4d3b;
+  --color-bg-card: #edf8ef;
+  --shadow-sm: 0 2px 8px rgba(26, 77, 59, 0.06);
+  --shadow-md: 0 8px 32px rgba(26, 77, 59, 0.1);
+  --shadow-lg: 0 20px 60px rgba(26, 77, 59, 0.14);
+  --shadow-glow: 0 0 40px rgba(39, 161, 86, 0.25);
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
@@ -311,7 +311,7 @@ p {
 .btn:active { transform: scale(0.97); }
 
 .btn--primary {
-  background: linear-gradient(135deg, #e84118 0%, #c23010 100%);
+  background: linear-gradient(135deg, #27a156 0%, #1d7a41 100%);
   color: #fff;
   box-shadow: 0 4px 20px rgba(232, 65, 24, 0.4);
   border-color: transparent;
@@ -325,7 +325,7 @@ p {
 }
 
 .btn--accent {
-  background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);
+  background: linear-gradient(135deg, #52b788 0%, #d68910 100%);
   color: #fff;
   box-shadow: 0 4px 20px rgba(243, 156, 18, 0.4);
 }
@@ -454,7 +454,7 @@ p {
   left: 0.9rem; right: 0.9rem;
   bottom: 0.15rem;
   height: 2px;
-  background: linear-gradient(90deg, #e84118, #ffc107);
+  background: linear-gradient(90deg, #27a156, #8b6f47);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition);
@@ -519,13 +519,30 @@ p {
   padding: calc(var(--header-height) + 3.5rem) min(1.5rem, 5vw) 5rem;
   color: #fff;
   overflow: hidden;
-  background-color: #070c14;
-  background-image:
-    linear-gradient(160deg, rgba(5,10,20,0.60) 0%, rgba(20,30,50,0.38) 45%, rgba(5,8,16,0.72) 100%),
-    url("../images/Disaster-management-Hero.webp");
-  background-size: cover;
-  background-position: center 30%;
-  background-repeat: no-repeat;
+  background-color: #071a10;
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    160deg,
+    rgba(4, 20, 10, 0.55) 0%,
+    rgba(10, 40, 22, 0.38) 45%,
+    rgba(3, 15, 8, 0.60) 100%
+  );
 }
 
 /* Grid overlay */
@@ -533,10 +550,10 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 2;
   background-image:
-    linear-gradient(rgba(255,87,34,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,87,34,0.06) 1px, transparent 1px);
+    linear-gradient(rgba(39,161,86,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39,161,86,0.05) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
@@ -546,8 +563,8 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
-  background: radial-gradient(ellipse 85% 70% at 50% 60%, transparent 0%, rgba(5,10,20,0.50) 100%);
+  z-index: 2;
+  background: radial-gradient(ellipse 85% 70% at 50% 60%, transparent 0%, rgba(3,12,6,0.30) 100%);
   pointer-events: none;
 }
 
@@ -556,22 +573,22 @@ p {
   position: absolute;
   width: 500px; height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,65,24,0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(39,161,86,0.22) 0%, transparent 70%);
   top: -10%; left: -5%;
   animation: hero-glow-pulse 6s ease-in-out infinite;
   pointer-events: none;
-  z-index: 0;
+  z-index: 3;
 }
 
 .hero .hero-glow-2 {
   position: absolute;
   width: 400px; height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(243,156,18,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(139,195,74,0.14) 0%, transparent 70%);
   bottom: 5%; right: 5%;
   animation: hero-glow-pulse 8s ease-in-out infinite 2s;
   pointer-events: none;
-  z-index: 0;
+  z-index: 3;
 }
 
 @keyframes hero-glow-pulse {
@@ -581,7 +598,7 @@ p {
 
 .hero__inner {
   position: relative;
-  z-index: 1;
+  z-index: 4;
   width: min(860px, 100%);
   margin-inline: auto;
   text-align: center;
@@ -608,7 +625,7 @@ p {
 }
 
 .hero__kicker::before {
-  content: "🚨";
+  content: "🌿";
   font-size: 0.9em;
 }
 
@@ -658,7 +675,7 @@ p {
 .hero__trust-item::before {
   content: "✓";
   margin-right: 0.3rem;
-  color: #ffc107;
+  color: #8b6f47;
   font-size: 0.85em;
   font-weight: 800;
 }
@@ -684,7 +701,7 @@ p {
   display: block;
   font-size: 2rem;
   font-weight: 800;
-  color: #ffc107;
+  color: #8b6f47;
   letter-spacing: -0.03em;
   line-height: 1;
 }
@@ -701,7 +718,7 @@ p {
 
 /* ALERT TICKER */
 .alert-ticker {
-  background: linear-gradient(90deg, #c23010 0%, #e84118 50%, #c23010 100%);
+  background: linear-gradient(90deg, #1d7a41 0%, #27a156 50%, #1d7a41 100%);
   background-size: 200% 100%;
   animation: ticker-bg 4s linear infinite;
   padding: 0.55rem 0;
@@ -767,6 +784,39 @@ p {
 .hero.hero--subpage {
   min-height: min(70vh, 680px);
   padding: calc(var(--header-height) + 2.75rem) min(1.5rem, 5vw) 3.5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero--about {
+  background-image:
+    linear-gradient(160deg, rgba(4,20,10,0.55) 0%, rgba(10,42,22,0.38) 50%, rgba(3,15,8,0.60) 100%),
+    url('../images/ecotourism-about.webp');
+}
+
+.hero--services {
+  background-image:
+    linear-gradient(160deg, rgba(4,20,10,0.55) 0%, rgba(10,42,22,0.38) 50%, rgba(3,15,8,0.60) 100%),
+    url('../images/sustainable-marine-conservation.webp');
+}
+
+.hero--destinations {
+  background-image:
+    linear-gradient(160deg, rgba(4,20,10,0.55) 0%, rgba(10,42,22,0.38) 50%, rgba(3,15,8,0.60) 100%),
+    url('../images/botswana-chobe_river_elephants.webp');
+}
+
+.hero--pricing {
+  background-image:
+    linear-gradient(160deg, rgba(4,20,10,0.55) 0%, rgba(10,42,22,0.38) 50%, rgba(3,15,8,0.60) 100%),
+    url('../images/Mountain-Sanctuary.webp');
+}
+
+.hero--contact {
+  background-image:
+    linear-gradient(160deg, rgba(4,20,10,0.55) 0%, rgba(10,42,22,0.38) 50%, rgba(3,15,8,0.60) 100%),
+    url('../images/maldive-corals.webp');
 }
 
 /* ============================================================
@@ -819,7 +869,7 @@ p {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #e84118, #f39c12);
+  background: linear-gradient(90deg, #27a156, #52b788);
   opacity: 0;
   transition: opacity var(--transition);
 }
@@ -927,7 +977,7 @@ p {
   justify-content: center;
   font-weight: 800;
   color: #fff;
-  background: linear-gradient(135deg, #e84118, #c23010);
+  background: linear-gradient(135deg, #27a156, #1d7a41);
   box-shadow: 0 8px 20px rgba(232,65,24,0.3);
   flex-shrink: 0;
 }
@@ -980,7 +1030,7 @@ p {
   place-items: center;
   font-weight: 900;
   color: #fff;
-  background: linear-gradient(135deg, #e84118, #c23010);
+  background: linear-gradient(135deg, #27a156, #1d7a41);
   box-shadow: 0 10px 25px rgba(232,65,24,0.35);
   margin-top: -2.1rem;
   margin-bottom: 0.85rem;
@@ -1129,7 +1179,7 @@ p {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #e84118, #f39c12);
+  background: linear-gradient(90deg, #27a156, #52b788);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition);
@@ -1173,7 +1223,7 @@ p {
   aspect-ratio: 16/9;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: linear-gradient(145deg, #080d18 0%, #0d1b2a 100%);
+  background: linear-gradient(145deg, #1a4d3b 0%, #1a4d3b 100%);
   border: 1px solid rgba(232,65,24,0.2);
   box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(232,65,24,0.1);
 }
@@ -1444,7 +1494,7 @@ p {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #e84118 0%, #f39c12 50%, #27ae60 100%);
+  background: linear-gradient(90deg, #27a156 0%, #52b788 50%, #27ae60 100%);
   opacity: 0.9;
 }
 
@@ -1658,7 +1708,7 @@ p {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #e84118, #f39c12);
+  background: linear-gradient(90deg, #27a156, #52b788);
   opacity: 0;
   transition: opacity var(--transition);
 }
@@ -1750,7 +1800,7 @@ p {
 
 .badge--active { background: rgba(39,174,96,0.12); color: #1a7a42; }
 .badge--pending { background: rgba(243,156,18,0.12); color: #b8750e; }
-.badge--critical { background: rgba(232,65,24,0.12); color: #c23010; }
+.badge--critical { background: rgba(232,65,24,0.12); color: #1d7a41; }
 .badge--resolved { background: rgba(13,27,42,0.07); color: var(--color-text-muted); }
 
 /* ============================================================
@@ -1964,7 +2014,7 @@ p {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #e84118, #f39c12, #27ae60, #e84118);
+  background: linear-gradient(90deg, #27a156, #52b788, #27ae60, #27a156);
   background-size: 200% 100%;
   animation: footer-border 6s linear infinite;
 }
@@ -2067,7 +2117,7 @@ p {
   left: 50%;
   top: 0; bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, #e84118, rgba(232,65,24,0.1));
+  background: linear-gradient(180deg, #27a156, rgba(232,65,24,0.1));
   transform: translateX(-50%);
 }
 
@@ -2359,12 +2409,12 @@ p {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--c1, #e84118), var(--c2, #f39c12));
+  background: linear-gradient(90deg, var(--c1, #27a156), var(--c2, #52b788));
 }
 
-.dash-stat:nth-child(2) { --c1: #f39c12; --c2: #27ae60; }
+.dash-stat:nth-child(2) { --c1: #52b788; --c2: #27ae60; }
 .dash-stat:nth-child(3) { --c1: #27ae60; --c2: #1a9be0; }
-.dash-stat:nth-child(4) { --c1: #1a9be0; --c2: #e84118; }
+.dash-stat:nth-child(4) { --c1: #1a9be0; --c2: #27a156; }
 
 .dash-stat:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 
@@ -2383,10 +2433,10 @@ p {
   padding: 2rem;
   position: relative;
   overflow: hidden;
-  background-color: #070c14;
+  background-color: #0a1f12;
   background-image:
-    linear-gradient(160deg, rgba(5,10,20,0.82) 0%, rgba(10,18,36,0.68) 50%, rgba(5,8,16,0.88) 100%),
-    url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1920&auto=format&fit=crop&q=80");
+    linear-gradient(160deg, rgba(5,20,10,0.80) 0%, rgba(10,40,20,0.60) 50%, rgba(5,15,8,0.85) 100%),
+    url("images/ecotourism.webp");
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -2423,7 +2473,7 @@ p {
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.05em;
-  background: linear-gradient(135deg, #e84118 0%, #f39c12 100%);
+  background: linear-gradient(135deg, #27a156 0%, #52b788 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -2441,7 +2491,7 @@ p {
   gap: 0.5rem;
   background: rgba(232,65,24,0.15);
   border: 1px solid rgba(232,65,24,0.4);
-  color: #f39c12;
+  color: #52b788;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -2455,7 +2505,7 @@ p {
    EMERGENCY ALERT BAND (new component)
    ============================================================ */
 .emergency-band {
-  background: linear-gradient(135deg, #c23010 0%, #e84118 50%, #c23010 100%);
+  background: linear-gradient(135deg, #1d7a41 0%, #27a156 50%, #1d7a41 100%);
   padding: 1rem 0;
   text-align: center;
 }
@@ -2468,7 +2518,7 @@ p {
   margin: 0;
 }
 
-.emergency-band a { color: #ffc107; text-decoration: underline; }
+.emergency-band a { color: #8b6f47; text-decoration: underline; }
 
 /* ============================================================
    RESPONSIVE
@@ -2683,10 +2733,9 @@ select.form-input {
   padding-right: 2.5rem;
 }
 
-/* Auth page logo fix (not inverted) */
 .auth-page .logo__img,
 .auth-card .logo__img {
-  filter: none !important;
+  filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(113deg) brightness(0.6) !important;
 }
 
 /* Hero not affected by ticker position */
