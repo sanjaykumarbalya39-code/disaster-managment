@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Access your DisasterResponse HQ command account." />
-  <title>Mission Login | DisasterResponse HQ</title>
+  <meta name="description" content="Access your EcoVoyage account to book trips, track conservation impact, and manage your eco-tourism adventures." />
+  <title>Book Now | EcoVoyage Login</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
@@ -19,14 +19,14 @@
     <div class="auth-card">
       <div class="auth-card__header">
         <a class="logo" href="index.html" style="display:flex;justify-content:center;">
-          <img src="images/stackly-logo-disaster.webp" alt="DisasterResponse HQ" width="200" height="64" style="filter:none;" />
+          <img src="images/stackly-logo-disaster.webp" alt="EcoVoyage" width="200" height="64" />
         </a>
-        <h1 class="auth-card__title">Command Center Login</h1>
-        <p class="auth-card__sub">Access your emergency management dashboard</p>
+        <h1 class="auth-card__title">Book Your Adventure</h1>
+        <p class="auth-card__sub">Access your traveler dashboard and conservation impact</p>
       </div>
       <form novalidate>
         <div class="form-group">
-          <label class="form-label" for="login-email">Agency Email</label>
+          <label class="form-label" for="login-email">Email Address</label>
           <input type="email" id="login-email" name="email" class="form-input" placeholder="Enter your email" autocomplete="email" required />
         </div>
         <div class="form-group">
@@ -34,11 +34,11 @@
           <input type="password" id="login-password" name="password" class="form-input" placeholder="Enter your password" autocomplete="current-password" required />
         </div>
         <div class="form-group">
-          <label class="form-label" for="login-role">Login As</label>
+          <label class="form-label" for="login-role">Account Type</label>
           <select id="login-role" name="role" class="form-input">
             <option value="">Select your role...</option>
-            <option value="admin">Admin</option>
-            <option value="customer">Customer</option>
+            <option value="admin">Trip Organizer</option>
+            <option value="customer">Individual Traveler</option>
           </select>
         </div>
         <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:0.5rem;margin-bottom:1.25rem;font-size:0.875rem;">
@@ -47,13 +47,13 @@
           </label>
           <a href="404.html" style="color:var(--color-primary);font-weight:600;">Reset Password</a>
         </div>
-        <button type="submit" class="btn btn--primary" style="width:100%;">Access Command Dashboard</button>
-        <div style="margin-top:1rem;padding:0.85rem;background:rgba(232,65,24,0.06);border:1px solid rgba(232,65,24,0.15);border-radius:8px;text-align:center;">
-          <span style="font-size:0.82rem;color:var(--color-text-muted);">🔴 Active Incident? Call <a href="tel:+18005550142" style="color:var(--color-primary);font-weight:700;">+91-9876543210</a></span>
+        <button type="submit" class="btn btn--primary" style="width:100%;">Access My Dashboard</button>
+        <div style="margin-top:1rem;padding:0.85rem;background:rgba(39,161,86,0.06);border:1px solid rgba(39,161,86,0.15);border-radius:8px;text-align:center;">
+          <span style="font-size:0.82rem;color:var(--color-text-muted);">📞 Need help? Call <a href="tel:+18006600TRIP" style="color:var(--color-primary);font-weight:700;">+91-9876543210</a></span>
         </div>
       </form>
       <div class="auth-card__footer">
-        <p>New agency? <a href="register.html">Register your organization →</a></p>
+        <p>New to EcoVoyage? <a href="register.html">Join us today →</a></p>
       </div>
     </div>
   </div>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="DisasterResponse HQ Command Dashboard — incident management, deployments, and operations analytics." />
-  <title>Admin Incident Dashboard</title>
+  <meta name="description" content="EcoVoyage Admin Dashboard — bookings management, destination catalog, and operations analytics." />
+  <title>EcoVoyage Admin Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
@@ -24,10 +24,10 @@
       <ul class="dash__nav">
         <li><a href="admin-dashboard.html" aria-current="page"><span class="dash__ico" aria-hidden="true">⌂</span>Overview</a></li>
         <li><a href="#charts"><span class="dash__ico" aria-hidden="true">▤</span>Charts</a></li>
-        <li><a href="#incidents"><span class="dash__ico" aria-hidden="true">⚠</span>Incidents</a></li>
-        <li><a href="#products"><span class="dash__ico" aria-hidden="true">▦</span>Equipment</a></li>
+        <li><a href="#incidents"><span class="dash__ico" aria-hidden="true">📋</span>Bookings</a></li>
+        <li><a href="#products"><span class="dash__ico" aria-hidden="true">🌿</span>Destinations</a></li>
         <li><a href="#orders"><span class="dash__ico" aria-hidden="true">⟲</span>Orders</a></li>
-        <li><a href="#team"><span class="dash__ico" aria-hidden="true">◉</span>Teams</a></li>
+        <li><a href="#team"><span class="dash__ico" aria-hidden="true">◉</span>Guides</a></li>
         <li><a href="#inquiries"><span class="dash__ico" aria-hidden="true">✉</span>Inquiries</a></li>
         <li><a href="#reports"><span class="dash__ico" aria-hidden="true">☷</span>Reports</a></li>
         <li class="dash__divider" aria-hidden="true"></li>
@@ -39,13 +39,13 @@
       <header class="dash__top">
         <div class="dash__headerLogo">
           <a class="dash__brandLink" href="index.html" aria-label="Home">
-            <img class="logo__img" src="images/stackly-logo-disaster.webp" alt="Stackly" width="160" height="40" decoding="async" />
+            <img class="logo__img" src="images/stackly-logo-disaster.webp" alt="EcoVoyage" width="160" height="40" decoding="async" />
           </a>
         </div>
         <button type="button" class="btn btn--outline btn--sm dash__menuBtn" data-dash-toggle aria-label="Open menu">☰</button>
         <div class="dash__title">
-          <h1>Admin dashboard</h1>
-          <p>Orders, inventory health, and customer signals.</p>
+          <h1>Admin Dashboard</h1>
+          <p>Bookings, destination catalog, and traveler signals.</p>
         </div>
         <div class="dash__right">
           <label class="dashSearch" aria-label="Search">
@@ -65,7 +65,7 @@
       <section class="kpis" aria-label="Key metrics">
         <article class="kpi">
           <div class="kpi__row">
-            <span class="kpi__label">Active SKUs</span>
+            <span class="kpi__label">Active Destinations</span>
             <span class="kpi__trend kpi__trend--up">+4.1%</span>
           </div>
           <span class="kpi__value">128</span>
@@ -73,15 +73,15 @@
         </article>
         <article class="kpi">
           <div class="kpi__row">
-            <span class="kpi__label">Open pipeline (30d)</span>
+            <span class="kpi__label">Bookings revenue (30d)</span>
             <span class="kpi__trend kpi__trend--up">+9.8%</span>
           </div>
           <span class="kpi__value">$842K</span>
-          <span class="kpi__sub">qualified opportunities</span>
+          <span class="kpi__sub">confirmed trips</span>
         </article>
         <article class="kpi">
           <div class="kpi__row">
-            <span class="kpi__label">On-time fulfillment</span>
+            <span class="kpi__label">On-time departures</span>
             <span class="kpi__trend kpi__trend--down">-1.2%</span>
           </div>
           <span class="kpi__value">94%</span>
@@ -97,7 +97,7 @@
         </article>
       </section>
 
-      <section class="dashGrid" aria-label="Incident Dashboard content">
+      <section class="dashGrid" aria-label="Admin Dashboard content">
         <div class="dashCol">
           <section id="charts" class="charts" aria-label="Charts">
             <article class="panel">
@@ -122,48 +122,48 @@
 
           <article class="panel" id="incidents">
             <div class="panel__head">
-              <h2>Active Incidents</h2>
-              <p>Ongoing events and priority alerts.</p>
+              <h2>Recent Bookings</h2>
+              <p>Active and upcoming tour reservations.</p>
             </div>
             <div class="panel__body tableWrap">
               <table class="tbl">
                 <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Type</th>
-                    <th>Location</th>
-                    <th>Severity</th>
+                    <th>Booking ID</th>
+                    <th>Destination</th>
+                    <th>Traveler</th>
+                    <th>Group Size</th>
                     <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>INC-2041</td>
-                    <td>Flood</td>
-                    <td>Riverside District</td>
-                    <td><span class="pill pill--danger">Critical</span></td>
-                    <td><span class="pill pill--warn">Active</span></td>
+                    <td>BK-2041</td>
+                    <td>Amazon Rainforest Expedition</td>
+                    <td>Emma Lawson</td>
+                    <td><span class="pill pill--info">4 pax</span></td>
+                    <td><span class="pill pill--warn">Upcoming</span></td>
                   </tr>
                   <tr>
-                    <td>INC-2038</td>
-                    <td>Wildfire</td>
-                    <td>Northern Hills</td>
-                    <td><span class="pill pill--warn">High</span></td>
-                    <td><span class="pill pill--warn">Active</span></td>
+                    <td>BK-2038</td>
+                    <td>African Safari Adventure</td>
+                    <td>James & Carol Wright</td>
+                    <td><span class="pill pill--info">2 pax</span></td>
+                    <td><span class="pill pill--warn">In Progress</span></td>
                   </tr>
                   <tr>
-                    <td>INC-2035</td>
-                    <td>Earthquake</td>
-                    <td>Port Zone</td>
-                    <td><span class="pill pill--warn">High</span></td>
-                    <td><span class="pill pill--ok">Contained</span></td>
+                    <td>BK-2035</td>
+                    <td>Marine Conservation Diving</td>
+                    <td>Priya Sharma</td>
+                    <td><span class="pill pill--info">6 pax</span></td>
+                    <td><span class="pill pill--ok">Confirmed</span></td>
                   </tr>
                   <tr>
-                    <td>INC-2029</td>
-                    <td>Chemical Spill</td>
-                    <td>Industrial Park</td>
-                    <td><span class="pill pill--info">Low</span></td>
-                    <td><span class="pill pill--ok">Resolved</span></td>
+                    <td>BK-2029</td>
+                    <td>Mountain Sanctuary Retreat</td>
+                    <td>Tom Nguyen</td>
+                    <td><span class="pill pill--info">3 pax</span></td>
+                    <td><span class="pill pill--ok">Completed</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -172,62 +172,62 @@
 
           <article class="panel" id="products">
             <div class="panel__head">
-              <h2>Equipment</h2>
-              <p>Catalog health and stock status.</p>
+              <h2>Destinations</h2>
+              <p>Catalog availability and booking capacity.</p>
             </div>
             <div class="panel__body tableWrap">
               <table class="tbl">
                 <thead>
                   <tr>
-                    <th>SKU</th>
-                    <th>Equipment Type</th>
+                    <th>Code</th>
+                    <th>Destination</th>
                     <th>Category</th>
-                    <th>Stock</th>
+                    <th>Capacity</th>
                     <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>MON-700</td>
-                    <td>Field Medical Station Pro</td>
-                    <td>Monitoring</td>
-                    <td>48</td>
-                    <td><span class="pill pill--ok">In stock</span></td>
+                    <td>AMZ-700</td>
+                    <td>Amazon Rainforest Expeditions</td>
+                    <td>Wildlife</td>
+                    <td>48 spots</td>
+                    <td><span class="pill pill--ok">Available</span></td>
                   </tr>
                   <tr>
-                    <td>ECG-220</td>
-                    <td>CardioTrace 12L</td>
-                    <td>Cardiology</td>
-                    <td>6</td>
-                    <td><span class="pill pill--warn">Low stock</span></td>
+                    <td>MNT-220</td>
+                    <td>Mountain Sanctuary Retreats</td>
+                    <td>Trekking</td>
+                    <td>6 spots</td>
+                    <td><span class="pill pill--warn">Almost Full</span></td>
                   </tr>
                   <tr>
-                    <td>INF-540</td>
-                    <td>InfuseSmart LV</td>
-                    <td>Infusion</td>
-                    <td>32</td>
-                    <td><span class="pill pill--ok">In stock</span></td>
+                    <td>MAR-540</td>
+                    <td>Marine Conservation Diving</td>
+                    <td>Marine</td>
+                    <td>32 spots</td>
+                    <td><span class="pill pill--ok">Available</span></td>
                   </tr>
                   <tr>
-                    <td>VEN-310</td>
-                    <td>RespiCare Portable Ventilator</td>
-                    <td>Respiratory</td>
-                    <td>0</td>
-                    <td><span class="pill pill--danger">Backorder</span></td>
+                    <td>WLD-310</td>
+                    <td>Wildlife Biodiversity Expeditions</td>
+                    <td>Wildlife</td>
+                    <td>0 spots</td>
+                    <td><span class="pill pill--danger">Sold Out</span></td>
                   </tr>
                   <tr>
-                    <td>DEF-180</td>
-                    <td>ShockSave AED Plus</td>
-                    <td>Cardiac</td>
-                    <td>24</td>
-                    <td><span class="pill pill--ok">In stock</span></td>
+                    <td>CUL-180</td>
+                    <td>Cultural & Agriculture Immersion</td>
+                    <td>Cultural</td>
+                    <td>24 spots</td>
+                    <td><span class="pill pill--ok">Available</span></td>
                   </tr>
                   <tr>
-                    <td>RAD-090</td>
-                    <td>TacComm Field Radio</td>
-                    <td>Communications</td>
-                    <td>11</td>
-                    <td><span class="pill pill--warn">Low stock</span></td>
+                    <td>SAF-090</td>
+                    <td>African Safari Adventures</td>
+                    <td>Safari</td>
+                    <td>11 spots</td>
+                    <td><span class="pill pill--warn">Almost Full</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -237,52 +237,52 @@
           <article class="panel" id="orders">
             <div class="panel__head">
               <h2>Orders</h2>
-              <p>Recent shipments and delivery status.</p>
+              <p>Recent bookings and confirmation status.</p>
             </div>
             <div class="panel__body tableWrap">
               <table class="tbl">
                 <thead>
                   <tr>
-                    <th>Order</th>
-                    <th>Agency</th>
+                    <th>Booking</th>
+                    <th>Traveler</th>
                     <th>Value</th>
-                    <th>Ship date</th>
+                    <th>Departure</th>
                     <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>#ME-10492</td>
-                    <td>Harborview Health</td>
-                    <td>$186,400</td>
+                    <td>#EV-10492</td>
+                    <td>Emma Lawson</td>
+                    <td>$6,400</td>
                     <td>Apr 10, 2026</td>
-                    <td><span class="pill pill--warn">In transit</span></td>
+                    <td><span class="pill pill--warn">Departing Soon</span></td>
                   </tr>
                   <tr>
-                    <td>#ME-10488</td>
-                    <td>Lakeside Medical</td>
-                    <td>$42,900</td>
+                    <td>#EV-10488</td>
+                    <td>Priya Sharma</td>
+                    <td>$4,900</td>
                     <td>Apr 05, 2026</td>
                     <td><span class="pill pill--ok">Active</span></td>
                   </tr>
                   <tr>
-                    <td>#ME-10471</td>
-                    <td>Metro Emergency Services</td>
-                    <td>$98,750</td>
+                    <td>#EV-10471</td>
+                    <td>James & Carol Wright</td>
+                    <td>$8,750</td>
                     <td>Mar 28, 2026</td>
-                    <td><span class="pill pill--ok">Delivered</span></td>
+                    <td><span class="pill pill--ok">Completed</span></td>
                   </tr>
                   <tr>
-                    <td>#ME-10459</td>
-                    <td>Ridgefield Relief Corps</td>
-                    <td>$23,200</td>
+                    <td>#EV-10459</td>
+                    <td>Tom Nguyen</td>
+                    <td>$3,200</td>
                     <td>Mar 15, 2026</td>
-                    <td><span class="pill pill--ok">Delivered</span></td>
+                    <td><span class="pill pill--ok">Completed</span></td>
                   </tr>
                   <tr>
-                    <td>#ME-10450</td>
-                    <td>Coastline Medical Center</td>
-                    <td>$314,000</td>
+                    <td>#EV-10450</td>
+                    <td>Aisha Bakr</td>
+                    <td>$14,000</td>
                     <td>Apr 18, 2026</td>
                     <td><span class="pill pill--info">Processing</span></td>
                   </tr>
@@ -293,55 +293,55 @@
 
           <article class="panel" id="team">
             <div class="panel__head">
-              <h2>Deployed Teams</h2>
-              <p>Field units and operational status.</p>
+              <h2>Tour Guides</h2>
+              <p>Active naturalist guides and assignment status.</p>
             </div>
             <div class="panel__body tableWrap">
               <table class="tbl">
                 <thead>
                   <tr>
-                    <th>Unit</th>
+                    <th>Guide</th>
                     <th>Specialisation</th>
-                    <th>Deployed To</th>
-                    <th>Members</th>
+                    <th>Assigned Tour</th>
+                    <th>Travelers</th>
                     <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Alpha-1</td>
-                    <td>Search &amp; Rescue</td>
-                    <td>Riverside District</td>
-                    <td>12</td>
-                    <td><span class="pill pill--warn">In field</span></td>
+                    <td>Dr. Ana Lima</td>
+                    <td>Rainforest Ecology</td>
+                    <td>Amazon Expedition</td>
+                    <td>4</td>
+                    <td><span class="pill pill--warn">On Tour</span></td>
                   </tr>
                   <tr>
-                    <td>Bravo-3</td>
-                    <td>Medical Response</td>
-                    <td>General Hospital</td>
+                    <td>Carlos Mwangi</td>
+                    <td>Wildlife Safari</td>
+                    <td>African Safari</td>
                     <td>8</td>
                     <td><span class="pill pill--ok">Standby</span></td>
                   </tr>
                   <tr>
-                    <td>Charlie-2</td>
-                    <td>Hazmat</td>
-                    <td>Industrial Park</td>
+                    <td>Suki Tanaka</td>
+                    <td>Marine Biology</td>
+                    <td>Marine Diving Tour</td>
                     <td>6</td>
-                    <td><span class="pill pill--info">Demobilising</span></td>
+                    <td><span class="pill pill--info">Returning</span></td>
                   </tr>
                   <tr>
-                    <td>Delta-4</td>
-                    <td>Logistics</td>
-                    <td>Forward Base North</td>
+                    <td>Raj Patel</td>
+                    <td>Mountain Trekking</td>
+                    <td>Himalayan Retreat</td>
                     <td>10</td>
-                    <td><span class="pill pill--warn">In field</span></td>
+                    <td><span class="pill pill--warn">On Tour</span></td>
                   </tr>
                   <tr>
-                    <td>Echo-5</td>
-                    <td>Communications</td>
-                    <td>Command Centre</td>
+                    <td>Amara Diallo</td>
+                    <td>Cultural Immersion</td>
+                    <td>Base Camp</td>
                     <td>4</td>
-                    <td><span class="pill pill--ok">On duty</span></td>
+                    <td><span class="pill pill--ok">Available</span></td>
                   </tr>
                 </tbody>
               </table>
@@ -359,23 +359,23 @@
               <ul class="list">
                 <li>
                   <strong>INQ-8831</strong>
-                  <span>ICU refresh — 42 beds · US-East</span>
+                  <span>Amazon rainforest group trip — 8 pax · Brazil</span>
                 </li>
                 <li>
                   <strong>INQ-8827</strong>
-                  <span>Infusion fleet assessment · EU-West</span>
+                  <span>Honeymoon eco-lodge package · Maldives</span>
                 </li>
                 <li>
                   <strong>INQ-8816</strong>
-                  <span>Telemetry expansion · APAC</span>
+                  <span>Corporate conservation volunteering · APAC</span>
                 </li>
                 <li>
                   <strong>INQ-8809</strong>
-                  <span>Emergency cache resupply · US-South</span>
+                  <span>Custom safari itinerary — family · South Africa</span>
                 </li>
                 <li>
                   <strong>INQ-8801</strong>
-                  <span>Ventilator fleet renewal · Canada</span>
+                  <span>Marine diving expedition — 4 pax · Canada</span>
                 </li>
               </ul>
               <div style="margin-top:0.85rem;">
@@ -391,11 +391,11 @@
             </div>
             <div class="panel__body">
               <ul class="list">
-                <li><strong>Review low-stock SKUs</strong><span>3 items require reorder checks.</span></li>
-                <li><strong>Approve quotes</strong><span>2 quotes pending dispatch approval.</span></li>
+                <li><strong>Review almost-full destinations</strong><span>3 tours need capacity review.</span></li>
+                <li><strong>Approve bookings</strong><span>2 bookings pending confirmation.</span></li>
                 <li><strong>Reply to inquiries</strong><span>5 new threads since yesterday.</span></li>
-                <li><strong>Deploy Alpha-1 sitrep</strong><span>INC-2041 update overdue by 2h.</span></li>
-                <li><strong>Reorder VEN-310</strong><span>Ventilator backorder — urgent request.</span></li>
+                <li><strong>Post-trip impact report</strong><span>BK-2029 debrief overdue by 2h.</span></li>
+                <li><strong>Update SAF-090 availability</strong><span>Safari spots — reopen waitlist.</span></li>
               </ul>
             </div>
           </article>
@@ -408,19 +408,19 @@
             <div class="panel__body">
               <ul class="list">
                 <li>
-                  <strong>Flood INC-2041 — Sitrep 3</strong>
-                  <span>Filed by Alpha-1 · 2h ago</span>
+                  <strong>Amazon BK-2041 — Pre-trip Briefing</strong>
+                  <span>Filed by Dr. Ana Lima · 2h ago</span>
                 </li>
                 <li>
-                  <strong>Wildfire INC-2038 — Resource req.</strong>
-                  <span>Filed by Bravo-3 · 6h ago</span>
+                  <strong>Safari BK-2038 — Impact Report</strong>
+                  <span>Filed by Carlos Mwangi · 6h ago</span>
                 </li>
                 <li>
-                  <strong>Earthquake INC-2035 — After action</strong>
+                  <strong>Marine BK-2035 — After-trip Review</strong>
                   <span>Filed by HQ · Yesterday</span>
                 </li>
                 <li>
-                  <strong>Q1 Operations Summary</strong>
+                  <strong>Q1 Conservation Impact Summary</strong>
                   <span>Filed by Admin · 3 days ago</span>
                 </li>
               </ul>
